@@ -7,6 +7,12 @@ Panels:
         - /Global Options1
         - /TF1
         - /TF1/Frames1
+        - /map1
+        - /Velodyne1
+        - /Map Cloud1
+        - /Map Cloud1/Status1
+        - /Test Ndt Cloud1
+        - /Odometry1
       Splitter Ratio: 0.703999996
     Tree Height: 386
   - Class: rviz/Selection
@@ -43,11 +49,11 @@ Visualization Manager:
         base_link:
           Value: false
         camera:
-          Value: false
+          Value: true
         camera_init:
           Value: true
         laser_odom:
-          Value: false
+          Value: true
         map:
           Value: false
       Marker Scale: 10
@@ -61,8 +67,7 @@ Visualization Manager:
             aft_mapped:
               {}
             camera:
-              base_link:
-                {}
+              {}
             laser_odom:
               {}
       Update Interval: 0
@@ -359,7 +364,7 @@ Visualization Manager:
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 244
+      Max Intensity: 80
       Min Color: 0; 0; 0
       Min Intensity: 0
       Name: Trajectory
@@ -437,8 +442,8 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 22.6508045
-        Min Value: -4.82793093
+        Max Value: 22.5301723
+        Min Value: -1.79348886
         Value: true
       Axis: Y
       Channel Name: intensity
@@ -494,6 +499,36 @@ Visualization Manager:
       Use Fixed Frame: true
       Use rainbow: true
       Value: false
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: ""
+      Decay Time: 0
+      Enabled: false
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: Test Ndt Cloud
+      Position Transformer: ""
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.00999999978
+      Style: Flat Squares
+      Topic: /test_ndt_cloud
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: false
     - Class: rviz/Image
       Enabled: true
       Image Topic: /camera/left/image_rect
@@ -506,11 +541,45 @@ Visualization Manager:
       Transport Hint: raw
       Unreliable: false
       Value: true
+    - Angle Tolerance: 0.100000001
+      Class: rviz/Odometry
+      Covariance:
+        Orientation:
+          Alpha: 0.5
+          Color: 255; 255; 127
+          Color Style: Unique
+          Frame: Local
+          Offset: 1
+          Scale: 1
+          Value: true
+        Position:
+          Alpha: 0.300000012
+          Color: 204; 51; 204
+          Scale: 1
+          Value: true
+        Value: true
+      Enabled: true
+      Keep: 100
+      Name: Odometry
+      Position Tolerance: 0.100000001
+      Shape:
+        Alpha: 1
+        Axes Length: 1
+        Axes Radius: 0.100000001
+        Color: 255; 25; 0
+        Head Length: 0.300000012
+        Head Radius: 0.100000001
+        Shaft Length: 1
+        Shaft Radius: 0.0500000007
+        Value: Arrow
+      Topic: /laser_odom_optimization_to_init
+      Unreliable: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 0; 0; 0
     Default Light: true
-    Fixed Frame: camera
+    Fixed Frame: camera_init
     Frame Rate: 60
   Name: root
   Tools:
@@ -525,25 +594,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 67.545723
+      Distance: 64.3708267
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -1.67207003
-        Y: -14.1835995
-        Z: 2.67778802
+        X: -3.054286
+        Y: -10.975709
+        Z: 10.129077
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.0452018566
+      Pitch: -0.639797151
       Target Frame: base_link
       Value: Orbit (rviz)
-      Yaw: 1.50054669
+      Yaw: 1.805547
     Saved: ~
 Window Geometry:
   Displays:

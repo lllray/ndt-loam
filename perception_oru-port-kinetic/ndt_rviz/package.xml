@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+  <name>ndt_rviz</name>
+  <version>1.0.31</version>
+  <description>The ndt_rviz package</description>
+
+  <maintainer email="henrik.andreasson@oru.se">Henrik Andreasson</maintainer>
+  <maintainer email="todor.stoyanov@oru.se">Todor Stoyanov</maintainer>
+  <author>Henrik Andreasson</author>
+
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+  </export>
+</package>

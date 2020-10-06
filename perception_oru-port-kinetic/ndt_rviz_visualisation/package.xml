@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package>
+  <name>ndt_rviz_visualisation</name>
+  <version>1.0.31</version>
+  <description>The ndt_rviz_visualisation package</description>
+
+  <maintainer email="tomasz.kucner@oru.se">Tomasz Kucner</maintainer>
+  <maintainer email="todor.stoyanov@oru.se">Todor Stoyanov</maintainer>
+  <author>Tomasz Kucner</author>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>rviz</build_depend>
+
+  <!-- Dependencies for the message generation -->
+  <build_depend>ndt_map</build_depend>
+  <build_depend>message_generation</build_depend>
+  
+  <run_depend>ndt_map</run_depend>
+  <run_depend>message_runtime</run_depend>
+  <run_depend>rviz</run_depend>
+
+  <export>
+    <rviz plugin="${prefix}/plugin_description.xml"/>
+  </export>
+
+</package>

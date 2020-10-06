@@ -165,7 +165,7 @@ public:
     
     void cloudHandler(const sensor_msgs::PointCloud2ConstPtr& laserCloudMsg){
 
-        //ROS_INFO("[imageProjection] start cloudHandler!");
+        //if(DEBUG_INFO)ROS_INFO("[imageProjection] start cloudHandler!");
         // 1. Convert ros message to pcl point cloud
         copyPointCloud(laserCloudMsg);
         // 2. Start and end angle of a scan

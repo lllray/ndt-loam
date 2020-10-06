@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(lego_loam)
-SET(CMAKE_BUILD_TYPE Release)
+
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -O3")
 
 find_package(catkin REQUIRED COMPONENTS
@@ -51,16 +51,16 @@ link_directories(
 	${GTSAM_LIBRARY_DIRS}
 )
 
-add_executable(imageProjection src/imageProjection.cpp)
-add_dependencies(imageProjection ${catkin_EXPORTED_TARGETS} cloud_msgs_gencpp)
-target_link_libraries(imageProjection ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBRARIES})
+add_executable(laserImageProjection src/imageProjection.cpp)
+add_dependencies(laserImageProjection ${catkin_EXPORTED_TARGETS} cloud_msgs_gencpp)
+target_link_libraries(laserImageProjection ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBRARIES})
 
-add_executable(featureAssociation src/featureAssociation.cpp include/ndtMap.h include/autoware_ndt.h)
-add_dependencies(featureAssociation ${catkin_EXPORTED_TARGETS} cloud_msgs_gencpp)
-target_link_libraries(featureAssociation ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBRARIES})
+add_executable(laserFeatureAssociation src/featureAssociation.cpp src/ndtMap.cpp include/ndtMap.h src/autoware_ndt.cpp include/autoware_ndt.h)
+add_dependencies(laserFeatureAssociation ${catkin_EXPORTED_TARGETS} cloud_msgs_gencpp)
+target_link_libraries(laserFeatureAssociation ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBRARIES})
 
-add_executable(mapOptmization src/mapOptmization.cpp)
-target_link_libraries(mapOptmization ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBRARIES} gtsam)
+add_executable(laserMapOptmization src/mapOptmization.cpp)
+target_link_libraries(laserMapOptmization ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBRARIES} gtsam)
 
-add_executable(transformFusion src/transformFusion.cpp)
-target_link_libraries(transformFusion ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBRARIES})
+add_executable(laserTransformFusion src/transformFusion.cpp)
+target_link_libraries(laserTransformFusion ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBRARIES})

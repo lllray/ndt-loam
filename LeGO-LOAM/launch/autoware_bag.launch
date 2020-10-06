@@ -1,0 +1,7 @@
+<launch>
+
+
+<node pkg="rosbag" type="play" name="rosbag" args="--clock -r 0.5 /home/ray/bag/lego_loam_bag/2017-06-08-15-49-45_0.bag /home/ray/bag/lego_loam_bag/2017-06-08-15-50-45_1.bag /home/ray/bag/lego_loam_bag/2017-06-08-15-51-45_2.bag /home/ray/bag/lego_loam_bag/2017-06-08-15-52-45_3.bag --topics /imu/data /velodyne_points"/>
+
+
+</launch>

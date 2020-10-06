@@ -1899,70 +1899,70 @@ bool isStep=false;
 bool usePure=false;
 bool useAutoware=true;
     //lx add 0222
-//    void ndtAliginStep(){
-//        ndtGetCloudIn();
-//        float transformNdtOut[6];
-//        //pcl::PointCloud<pcl::PointXYZ> cloud_out=ndt_match_step(segmentedCloudPure,transformNdtOut);
-//        pcl::PointCloud<pcl::PointXYZ> cloud_out;
-//        if(useAutoware){
-//            if(usePure)autoware_ndt_match(segmentedCloudPure,transformNdtOut);
-//            else autoware_ndt_match(segmentedCloud,transformNdtOut);
-//        }else{
-//            if(usePure)ndt_match(segmentedCloudPure,transformNdtOut);
-//            else ndt_match(segmentedCloud,transformNdtOut);
-//        }
-//        if(first){
-//            for (int i = 0; i < cloud_out.points.size(); i++) {
-//                PointType pNew;
-//                pNew.z=cloud_out.points[i].x;
-//                pNew.x=cloud_out.points[i].y;
-//                pNew.y=-cloud_out.points[i].z;
-//                pNew.intensity=10;
-//                cloud_ndt.points.push_back(pNew);
-//            }
-//
-//            sensor_msgs::PointCloud2 laserCloudOutMsg;
-//            if(1){
-//                pcl::toROSMsg(cloud_ndt, laserCloudOutMsg);
-//                laserCloudOutMsg.header.stamp = cloudHeader.stamp;
-//                laserCloudOutMsg.header.frame_id = "/camera";
-//                pubTestNdtCloud.publish(laserCloudOutMsg);
-//            }
-//            sleep(99);
-//        }
-//        if(!first)first=true;
-//        //sleep(99);
-//    }
-//    void ndtAligin(){
-//        ndtGetCloudIn();
-//        float transformNdtOut[6];
-//        ROS_INFO(""
-//                 ""
-//                 "");
-//        ROS_INFO("[featureAssociation] before ndt_match transformCur is");
-//        ROS_INFO("T 1:%f 3:%f 2:%f ",transformCur[3],transformCur[4],transformCur[5]);
-//        ROS_INFO("r x:%f z:%f y:%f ",transformCur[0],transformCur[1],transformCur[2]);
-//        for(int i=0;i<6;i++)transformNdtOut[i]=transformCur[i];
-//
-//        if(useAutoware){
-//            if(usePure)autoware_ndt_match(segmentedCloudPure,transformCur);
-//                else autoware_ndt_match(segmentedCloud,transformCur);
-//        }else{
-//            if(usePure)ndt_match(segmentedCloudPure,transformCur);
-//            else ndt_match(segmentedCloud,transformCur);
-//        }
-////        ROS_INFO("[featureAssociation] after ndt_match transformCur is");
-////        ROS_INFO("T 1:%f 3:%f 2:%f ",transformNdtOut[3],transformNdtOut[4],transformNdtOut[5]);
-////        ROS_INFO("r x:%f z:%f y:%f ",transformNdtOut[0],transformNdtOut[1],transformNdtOut[2]);
+    void ndtAliginStep(){
+        ndtGetCloudIn();
+        float transformNdtOut[6];
+        //pcl::PointCloud<pcl::PointXYZ> cloud_out=ndt_match_step(segmentedCloudPure,transformNdtOut);
+        pcl::PointCloud<pcl::PointXYZ> cloud_out;
+        if(useAutoware){
+            if(usePure)autoware_ndt_match(segmentedCloudPure,transformNdtOut);
+            else autoware_ndt_match(segmentedCloud,transformNdtOut);
+        }else{
+            if(usePure)ndt_match(segmentedCloudPure,transformNdtOut);
+            else ndt_match(segmentedCloud,transformNdtOut);
+        }
+        if(first){
+            for (int i = 0; i < cloud_out.points.size(); i++) {
+                PointType pNew;
+                pNew.z=cloud_out.points[i].x;
+                pNew.x=cloud_out.points[i].y;
+                pNew.y=-cloud_out.points[i].z;
+                pNew.intensity=10;
+                cloud_ndt.points.push_back(pNew);
+            }
+
+            sensor_msgs::PointCloud2 laserCloudOutMsg;
+            if(1){
+                pcl::toROSMsg(cloud_ndt, laserCloudOutMsg);
+                laserCloudOutMsg.header.stamp = cloudHeader.stamp;
+                laserCloudOutMsg.header.frame_id = "/camera";
+                pubTestNdtCloud.publish(laserCloudOutMsg);
+            }
+            sleep(99);
+        }
+        if(!first)first=true;
+        //sleep(99);
+    }
+    void ndtAligin(){
+        ndtGetCloudIn();
+        float transformNdtOut[6];
+        ROS_INFO(""
+                 ""
+                 "");
+        ROS_INFO("[featureAssociation] before ndt_match transformCur is");
+        ROS_INFO("T 1:%f 3:%f 2:%f ",transformCur[3],transformCur[4],transformCur[5]);
+        ROS_INFO("r x:%f z:%f y:%f ",transformCur[0],transformCur[1],transformCur[2]);
+        for(int i=0;i<6;i++)transformNdtOut[i]=transformCur[i];
+
+        if(useAutoware){
+            if(usePure)autoware_ndt_match(segmentedCloudPure,transformCur);
+                else autoware_ndt_match(segmentedCloud,transformCur);
+        }else{
+            if(usePure)ndt_match(segmentedCloudPure,transformCur);
+            else ndt_match(segmentedCloud,transformCur);
+        }
 //        ROS_INFO("[featureAssociation] after ndt_match transformCur is");
-//        ROS_INFO("T 1:%f 3:%f 2:%f ",transformCur[3],transformCur[4],transformCur[5]);
-//        ROS_INFO("r x:%f z:%f y:%f ",transformCur[0],transformCur[1],transformCur[2]);
-//    }
+//        ROS_INFO("T 1:%f 3:%f 2:%f ",transformNdtOut[3],transformNdtOut[4],transformNdtOut[5]);
+//        ROS_INFO("r x:%f z:%f y:%f ",transformNdtOut[0],transformNdtOut[1],transformNdtOut[2]);
+        ROS_INFO("[featureAssociation] after ndt_match transformCur is");
+        ROS_INFO("T 1:%f 3:%f 2:%f ",transformCur[3],transformCur[4],transformCur[5]);
+        ROS_INFO("r x:%f z:%f y:%f ",transformCur[0],transformCur[1],transformCur[2]);
+    }
     bool pub=false;
     void runFeatureAssociation()
     {
-        //ROS_INFO("[featureAssociation] run FeatureAssociation!");
-        if (newSegmentedCloud && newSegmentedCloudInfo && newOutlierCloud && newSegmentedCloud &&
+
+        if (newSegmentedCloud && newSegmentedCloudInfo && newOutlierCloud && newSegmentedCloud && newSegmentedCloudPure&&
             std::abs(timeNewSegmentedCloudInfo - timeNewSegmentedCloud) < 0.05 &&
             std::abs(timeNewOutlierCloud - timeNewSegmentedCloud) < 0.05){
 
@@ -1973,11 +1973,14 @@ bool useAutoware=true;
         }else{
             return;
         }
-        //ROS_INFO("[featureAssociation] start FeatureAssociation!");
+        //if(DEBUG_INFO)ROS_INFO("[featureAssociation] start FeatureAssociation!");
         /**
         	1. Feature Extraction
         */
         adjustDistortion();
+
+        //lx add 0222
+        //ndtAligin();
 
         calculateSmoothness();
 
@@ -1998,13 +2001,23 @@ bool useAutoware=true;
 
         //初值预测
         updateInitialGuess();
-        updateTransformation();
+
+        if(!useNdt) {
+            updateTransformation();
+        }
+        else {
+            if (isStep)ndtAliginStep();
+            else ndtAligin();
+        }
+
         integrateTransformation();
 
         publishOdometry();
 
         publishCloudsLast(); // cloud to mapOptimization
 
+//        if(pub)sleep(99);
+//        pub=true;
     }
 };
 
@@ -2019,15 +2032,21 @@ int main(int argc, char** argv)
 
     FeatureAssociation FA;
 
+    ndt_init();
+    autoware_ndt_init();
     ros::Rate rate(200);
     while (ros::ok())
     {
         ros::spinOnce();
 
+        //ROS_INFO("[featureAssociation] run here!");
+
         FA.runFeatureAssociation();
+
 
         rate.sleep();
     }
+
     ros::spin();
     return 0;
 }
