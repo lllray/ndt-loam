@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/ray/ROS/lego_loam_ws/src/LeGO-LOAM/cloud_msgs/cmake-build-debug/devel/setup.sh

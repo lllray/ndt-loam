@@ -1,0 +1,29 @@
+<launch>
+    <arg name="pointcloud_topics" default="/rslidar_points"/>    
+    <arg name="imu_topic" default="/imu/data"/>    
+    <!--- Sim Time -->
+    <param name="/use_sim_time" value="false" /> 
+    <!--- TF -->
+    <node pkg="tf" type="static_transform_publisher" name="camera_init_to_map"  args="0 0 0 1.570795   0        1.570795 /map    /camera_init 10" />
+    <node pkg="tf" type="static_transform_publisher" name="base_link_to_camera" args="0 0 0 -1.570795 -1.570795 0        /camera /base_link   10" />
+    <!--- LeGO-LOAM -->   
+
+    <node pkg="lego_loam" type="imageProjection"    name="imageProjection"    output="screen">
+ 	 <param name="pointCloudTopic" value="$(arg pointcloud_topics)" />
+    </node>
+    <node pkg="lego_loam" type="featureAssociation" name="featureAssociation" output="screen"> 
+	<param name="imuTopic" value="$(arg imu_topic)" />
+    </node>
+    <node pkg="lego_loam" type="mapOptmization"     name="mapOptmization"     output="screen">
+	<param name="imuTopic" value="$(arg imu_topic)" />
+    </node>
+    <node pkg="lego_loam" type="transformFusion"    name="transformFusion"    output="screen"/>
+
+    <!--- Run Rviz-->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find lego_loam)/launch/demo.rviz" />
+
+
+
+
+
+</launch>
