@@ -18,10 +18,10 @@ find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   nav_msgs
   cloud_msgs
-		ndt_map
-		ndt_registration
-		ndt_map_builder
-pcl_omp_registration
+#		ndt_map
+#		ndt_registration
+#		ndt_map_builder
+#pcl_omp_registration
 )
 
 find_package(GTSAM REQUIRED QUIET)
